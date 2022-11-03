@@ -1,0 +1,9 @@
+<div>
+  <ul>
+    <li *ngFor="let result of results">
+      <span class="name">{{ result.name }}:</span>
+      <span class="percent">{{ result.count | percent: "1.1-1" }}</span>
+    </li>
+  </ul>
+  <figure class="pie-chart" [ngStyle]="{'background': getGraph(), 'border-radius': '50%'}"></figure>
+</div>

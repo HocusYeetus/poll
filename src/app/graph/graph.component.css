@@ -1,0 +1,26 @@
+div {
+    display: flex;
+}
+
+.pie-chart {
+  border-radius: 50%;
+  height: 30em;
+  width: 30em;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+    margin: 1em;
+}
+
+.name {
+    flex: 66%;
+}
+
+.percent {
+    flex: 33%;
+}
