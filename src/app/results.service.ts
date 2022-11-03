@@ -6,7 +6,9 @@ import { Result, results } from "./results";
 })
 export class ResultsService {
   getResults(): Result[]{
-    return results;
+    console.log(results.sort((a,b) => a.count - b.count));
+    
+    return results.sort((a,b) => a.count - b.count);
   }
 
   constructor() { }

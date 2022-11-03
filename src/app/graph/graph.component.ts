@@ -45,10 +45,10 @@ export class GraphComponent implements OnInit {
     var index = 0;
     var total = 0;
     for (const result of this.results) {
-      total += result.count
+      total += result.count;
       graphColors += `
       ${this.colors[index % this.colors.length]} 0%,
-      ${this.colors[index % this.colors.length]} ${Math.trunc(total * 1000 + 0.5)/10}%,`;
+      ${this.colors[index % this.colors.length]} ${total * 100}%,`;
       index++;
     }
     graphColors = graphColors.slice(0,-1)
