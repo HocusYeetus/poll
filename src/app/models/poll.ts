@@ -1,5 +1,9 @@
 type Results = Map<string, number>
-
+/**
+ * contains key-value pairs for each answer in the poll along with its
+ * corresponding number of votes
+ * 
+ */
 export class Poll {
     constructor(public results: Results) {}
     
