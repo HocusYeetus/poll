@@ -1,70 +1,95 @@
 import { Component, OnInit } from '@angular/core';
-
+import arrayShuffle from 'array-shuffle';
+import { Poll } from '../models/poll';
 import { ResultsService } from '../results.service';
-import { Result } from '../results';
-import { concatWith } from 'rxjs';
 
 @Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.css'],
+	selector: 'app-graph',
+	templateUrl: './graph.component.html',
+	styleUrls: ['./graph.component.css'],
 })
 export class GraphComponent implements OnInit {
-  results: Result[] = [];
-  total: number = 0;
-  colors: string[] = [
-    'maroon',
-    'red',
-    'purple',
-    'fuchsia',
-    'green',
-    'lime',
-    'olive',
-    'yellow',
-    'navy',
-    'blue',
-    'teal',
-    'aqua',
-  ];
+	/** count is in percent for this component*/
+	poll?: Poll;
+	total: number = 0;
+	colors: string[] = [
+		'maroon',
+		'red',
+		'purple',
+		'fuchsia',
+		'green',
+		'lime',
+		'olive',
+		'yellow',
+		'navy',
+		'blue',
+		'teal',
+		'aqua',
+	];
+	graphColors: string = '';
 
-  getResults(): void {
-    this.results = this.resultsService.getResults();
-  }
+	private static readonly DOC_ID: string = 'sf3fYcWX8bYAmafcRM1G';
+	private static readonly ANSWER_FIELD: string = 'answers';
+	//sf3fYcWX8bYAmafcRM1G
 
-  calculatePercent(): void {
-    for (const result of this.results) {
-      this.total += result.count;
-    }
-    for (const result of this.results) {
-      result.count = result.count / this.total;
-    }
-  }
+	// refresh() {
+	// 	let sub = interval(5000).subscribe(() => this.getResults());
+	// }
 
-  generateGraph() {
-    var graphColors = 'conic-gradient(';
-    var index = 0;
-    var total = 0;
-    for (const result of this.results) {
-      total += result.count;
-      graphColors += `
-      ${this.colors[index % this.colors.length]} 0%,
-      ${this.colors[index % this.colors.length]} ${total * 100}%,`;
-      index++;
-    }
-    graphColors = graphColors.slice(0,-1)
-    graphColors += '\n)';
-    return graphColors;
-  }
+	getResults(): void {
+		this.resultsService.registerListener(GraphComponent.DOC_ID, (p) => {
+			this.poll = p;
+			this.calculatePercent();
+			this.generateGraph();
+			console.log('biteub');
+			
+		});
+	}
 
-  getGraph(): string {
-    return this.generateGraph();
-  }
+	calculatePercent(): void {
+		if (this.poll === undefined) {
+			return;
+		}
+		this.total = 0;
+		for (const [_, v] of this.poll.results) {
+			this.total += v;
+		}
+		for (let [k, v] of this.poll.results) {
+			this.poll.results.set(k, v / this.total);
+		}
+	}
 
-  constructor(private resultsService: ResultsService) {}
+	generateGraph() {
+		if (this.poll === undefined) {
+			return;
+		}
+		var graphColors = 'conic-gradient(';
+		var index = 0;
+		var total = 0;
+		for (const [_, v] of this.poll.results) {
+			graphColors += `\n${this.colors[index % this.colors.length]} ${
+				total * 100
+			}%,`;
+			total += v;
+			graphColors += `\n${this.colors[index % this.colors.length]} ${
+				total * 100
+			}%,`;
+			index++;
+		}
+		graphColors = graphColors.slice(0, -1);
+		graphColors += '\n)';
+		this.graphColors = graphColors;
+	}
 
-  ngOnInit(): void {
-    this.getResults();
-    this.calculatePercent();
-    console.log(this.getGraph());
-  }
+	randomizeColor() {
+		this.colors = arrayShuffle(this.colors);
+	}
+
+	constructor(private resultsService: ResultsService) {}
+
+	ngOnInit(): void {
+		this.randomizeColor();
+		this.getResults();
+		// this.refresh();
+	}
 }

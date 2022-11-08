@@ -1,9 +1,9 @@
 <div>
   <ul>
-    <li *ngFor="let result of results">
-      <span class="name">{{ result.name }}:</span>
-      <span class="percent">{{ result.count | percent: "1.1-1" }}</span>
+    <li  *ngFor="let kv of poll?.resultsToTuples()">
+      <span class="name">{{ kv[0] }}:</span>
+      <span class="percent">{{ kv[1] | percent: "1.1-1" }}</span>
     </li>
   </ul>
-  <figure class="pie-chart" [ngStyle]="{'background': getGraph(), 'border-radius': '50%'}"></figure>
+  <figure class="pie-chart" [ngStyle]="{'background': graphColors, 'border-radius': '50%'}"></figure>
 </div>

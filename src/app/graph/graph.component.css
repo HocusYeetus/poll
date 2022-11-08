@@ -4,6 +4,7 @@ div {
 
 .pie-chart {
   border-radius: 50%;
+  box-shadow: 1em 1em 2em lightblue;
   height: 30em;
   width: 30em;
 }

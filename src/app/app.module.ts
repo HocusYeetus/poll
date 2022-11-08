@@ -7,16 +7,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PollAnswersComponent,
-    DashboardComponent,
-    GraphComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		PollAnswersComponent,
+		DashboardComponent,
+		GraphComponent,
+	],
+	imports: [
+		BrowserModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
