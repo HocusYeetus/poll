@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GraphComponent } from './graph/graph.component';
-import { VotePageComponent } from './vote-page/vote-page.component';
-import { AppRoutingModule } from './app-routing.module';
 import { PollCreatorComponent } from './poll-creator/poll-creator.component';
+import { VotePageComponent } from './vote-page/vote-page.component';
 
 const routes: Routes = [
 	{ path: '', component: DashboardComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
 		VotePageComponent,
 		PollCreatorComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes)],
+	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes), FormsModule],
 	exports: [RouterModule],
 	providers: [],
 	bootstrap: [AppComponent],

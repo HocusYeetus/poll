@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import {
 	doc,
+	addDoc,
+	getDoc,
 	DocumentData,
 	DocumentSnapshot,
-	getDoc,
 	getFirestore,
 	onSnapshot,
 	updateDoc,
 	Unsubscribe,
 	increment,
+	collection,
+	WithFieldValue,
+	DocumentReference,
 } from 'firebase/firestore';
 import { firebaseConfig } from './firebase-config';
 import { Poll } from './models/poll';
@@ -36,6 +40,19 @@ export class ResultsService {
 			Object.entries(docSnap.get('counts'))
 		);
 		return new Poll(results);
+	}
+
+	private pollToDocSnap(poll: Poll) {
+		let dict: {[answer: string] : number} = {};
+		poll.resultsToTuples().forEach(([k, v]) => {
+			dict[k] = 0;
+			console.log(dict);			
+		})
+		return {counts : dict} as WithFieldValue<DocumentData>
+	}
+
+	createDoc(poll: Poll): Promise<DocumentReference<DocumentData>> {
+		return addDoc(collection(getFirestore(), "test-poll"), this.pollToDocSnap(poll));
 	}
 
 	incrementAnswer(answer: string, docID: string): void {
