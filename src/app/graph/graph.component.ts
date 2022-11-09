@@ -32,7 +32,7 @@ export class GraphComponent implements OnInit {
 
 	private static readonly DOC_ID: string = 'sf3fYcWX8bYAmafcRM1G';
 	private static readonly ANSWER_FIELD: string = 'answers';
-	// test-doc: sf3fYcWX8bYAmafcRM1G
+	// test-docs: sf3fYcWX8bYAmafcRM1G , HJLUln9noFtwHTeN8uSZ
 
 	getDocID() {
 		let id: string | null = this.route.snapshot.paramMap.get('id');

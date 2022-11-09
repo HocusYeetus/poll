@@ -8,7 +8,10 @@ import { GraphComponent } from './graph/graph.component';
 import { VotePageComponent } from './vote-page/vote-page.component';
 import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [{ path: ':id/graph', component: GraphComponent }];
+const routes: Routes = [
+	{ path: ':id/graph', component: GraphComponent },
+	{ path: ':id', component: VotePageComponent },
+];
 
 @NgModule({
 	declarations: [

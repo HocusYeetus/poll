@@ -1,1 +1,6 @@
-<p>vote-page works!</p>
+<p>Document ID: {{ docID }}</p>
+<li *ngFor="let kv of poll?.resultsToTuples()">
+	<button *ngIf="docID" (click)="incrementAnswer(kv[0], kv[1], docID)">
+		{{ kv[0] }}
+	</button>
+</li>
