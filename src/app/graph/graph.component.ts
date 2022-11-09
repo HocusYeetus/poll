@@ -41,8 +41,6 @@ export class GraphComponent implements OnInit {
 			this.poll = p;
 			this.calculatePercent();
 			this.generateGraph();
-			console.log('biteub');
-			
 		});
 	}
 
