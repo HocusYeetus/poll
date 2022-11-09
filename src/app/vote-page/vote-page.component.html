@@ -1,0 +1,6 @@
+<p>Document ID: {{ docID }}</p>
+<li *ngFor="let kv of poll?.resultsToTuples()">
+	<button *ngIf="docID" (click)="incrementAnswer(kv[0], docID)">
+		{{ kv[0] }}
+	</button>
+</li>

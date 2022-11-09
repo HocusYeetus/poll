@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import arrayShuffle from 'array-shuffle';
 import { Poll } from '../models/poll';
 import { ResultsService } from '../results.service';
@@ -10,6 +11,7 @@ import { ResultsService } from '../results.service';
 })
 export class GraphComponent implements OnInit {
 	/** count is in percent for this component*/
+	docID?: string;
 	poll?: Poll;
 	total: number = 0;
 	colors: string[] = [
@@ -30,19 +32,20 @@ export class GraphComponent implements OnInit {
 
 	private static readonly DOC_ID: string = 'sf3fYcWX8bYAmafcRM1G';
 	private static readonly ANSWER_FIELD: string = 'answers';
-	//sf3fYcWX8bYAmafcRM1G
+	// test-docs: sf3fYcWX8bYAmafcRM1G , HJLUln9noFtwHTeN8uSZ
 
-	// refresh() {
-	// 	let sub = interval(5000).subscribe(() => this.getResults());
-	// }
+	getDocID() {
+		let id: string | null = this.route.snapshot.paramMap.get('id');
+		if (id === null) return;
+		this.docID = id;
+	}
 
 	getResults(): void {
-		this.resultsService.registerListener(GraphComponent.DOC_ID, (p) => {
+		if (this.docID === undefined) return;
+		this.resultsService.registerListener(this.docID, (p) => {
 			this.poll = p;
 			this.calculatePercent();
 			this.generateGraph();
-			console.log('biteub');
-			
 		});
 	}
 
@@ -85,11 +88,14 @@ export class GraphComponent implements OnInit {
 		this.colors = arrayShuffle(this.colors);
 	}
 
-	constructor(private resultsService: ResultsService) {}
+	constructor(
+		private resultsService: ResultsService,
+		private route: ActivatedRoute
+	) {}
 
 	ngOnInit(): void {
+		this.getDocID();
 		this.randomizeColor();
 		this.getResults();
-		// this.refresh();
 	}
 }
