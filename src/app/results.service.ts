@@ -9,6 +9,7 @@ import {
 	onSnapshot,
 	updateDoc,
 	Unsubscribe,
+	increment,
 } from 'firebase/firestore';
 import { firebaseConfig } from './firebase-config';
 import { Poll } from './models/poll';
@@ -37,13 +38,10 @@ export class ResultsService {
 		return new Poll(results);
 	}
 
-	incrementAnswer(answer: string, count: number, docID: string): void {
-		console.log('yeet');
-
+	incrementAnswer(answer: string, docID: string): void {
+		let field = `counts.${answer}`
 		updateDoc(doc(getFirestore(), 'test-poll', docID), {
-			counts: {
-				[answer]: count,
-			},
+			[field] : increment(1)
 		});
 	}
 

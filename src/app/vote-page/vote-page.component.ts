@@ -23,8 +23,8 @@ export class VotePageComponent implements OnInit {
 		this.resultsService.getResults(this.docID).then((p) => (this.poll = p));
 	}
 
-	incrementAnswer(answer: string, count: number, docID: string) {
-		this.resultsService.incrementAnswer(answer, count, docID);
+	incrementAnswer(answer: string, docID: string) {
+		this.resultsService.incrementAnswer(answer, docID);
 		this.router.navigate(['/' + docID + '/graph']);
 	}
 
