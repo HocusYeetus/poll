@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { PollAnswersComponent } from './poll-answers/poll-answers.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GraphComponent } from './graph/graph.component';
+import { VotePageComponent } from './vote-page/vote-page.component';
+import { AppRoutingModule } from './app-routing.module';
+
+const routes: Routes = [{ path: ':id/graph', component: GraphComponent }];
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		PollAnswersComponent,
 		DashboardComponent,
 		GraphComponent,
+		VotePageComponent,
 	],
-	imports: [
-		BrowserModule,
-	],
+	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
