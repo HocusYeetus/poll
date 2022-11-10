@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+	color: white;
+	width: fit-content;
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	width: 100%;
+}
+
+body {
+	padding: 0em;
+	height: 100%;
+	background-color: #222831;
+	font-family: "Roboto Mono", monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1em;
+}
+
+h1 {
+	padding: 1em;
+	margin: 0.5em;
+	background-color: #00adb5;
+	box-shadow: 20px 20px rgba(0, 0, 0, 0.5);
+}
+
+button {
+	min-width: 3em;
+	height: 3em;
+	padding: 1em;
+	background-color: #00adb5;
+	border-radius: 1em;
+	border-style: none;
+	font-weight: 700;
+}
+
+section > input {
+	margin: 1em;
+	width: 80%;
+	padding: 1em;
+	border-style: solid;
+	border-radius: 1em;
+	font-size: 1em;
+	background-color: #393e46;
+}
+
+.container {
+	text-align: center;
+	left: 0;
+	right: 0;
+	margin: 3em auto;
+	padding: 1em;
+	background-color: #393e46;
+	box-shadow: 20px 20px rgba(0, 0, 0, 0.5);
+}

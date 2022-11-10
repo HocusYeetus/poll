@@ -1,13 +1,19 @@
-<div>
-    <span>
-        <button (click)="decrement()">-</button>
-        {{answerAmount}}
-        <button (click)="increment()">+</button>
-    </span>
-</div>
-<div *ngFor="let answer of answers; trackBy:trackByFn ; let i = index">
-	<input type="text" placeholder="Answer #{{i+1}}" [(ngModel)]="answers[i]"/>
-</div>
-<div>
-    <button (click)="print()">Print</button>
+<div class="container">
+	<div>
+		<span>
+			<button (click)="decrement()">-</button>
+			{{ answerAmount }}
+			<button (click)="increment()">+</button>
+		</span>
+	</div>
+	<section *ngFor="let answer of answers; trackBy: trackByFn; let i = index">
+		<input
+			type="text"
+			placeholder="Answer #{{ i + 1 }}"
+			[(ngModel)]="answers[i]"
+		/>
+	</section>
+	<div>
+		<button (click)="print()">Print</button>
+	</div>
 </div>
