@@ -5,13 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { GraphComponent } from './graph/graph.component';
 import { PollCreatorComponent } from './poll-creator/poll-creator.component';
 import { VotePageComponent } from './vote-page/vote-page.component';
 
 const routes: Routes = [
-	{ path: '', component: DashboardComponent },
+	{ path: '', component: PollCreatorComponent },
 	{ path: ':id/graph', component: GraphComponent },
 	{ path: ':id', component: VotePageComponent },
 ];
@@ -19,7 +18,6 @@ const routes: Routes = [
 @NgModule({
 	declarations: [
 		AppComponent,
-		DashboardComponent,
 		GraphComponent,
 		VotePageComponent,
 		PollCreatorComponent,

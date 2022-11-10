@@ -45,8 +45,7 @@ export class ResultsService {
 	private pollToDocSnap(poll: Poll) {
 		let dict: {[answer: string] : number} = {};
 		poll.resultsToTuples().forEach(([k, v]) => {
-			dict[k] = 0;
-			console.log(dict);			
+			dict[k] = 0;	
 		})
 		return {counts : dict} as WithFieldValue<DocumentData>
 	}
