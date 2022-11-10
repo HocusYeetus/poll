@@ -1,0 +1,34 @@
+.container {
+    width: 80%;
+}
+
+.link-viewer {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+.link-viewer>* {
+    height: 100%;
+    margin: auto 0;
+}
+
+button{
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-style: solid;
+    border-color: #00ADB5;
+}
+
+button:hover {
+    background-color: #00ADB588;
+}
+
+input{
+    flex-grow: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align: center;
+}

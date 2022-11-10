@@ -37,7 +37,7 @@ button {
 	font-weight: 700;
 }
 
-section > input {
+input {
 	margin: 1em;
 	width: 80%;
 	padding: 1em;

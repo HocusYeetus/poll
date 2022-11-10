@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { GraphComponent } from './graph/graph.component';
 import { PollCreatorComponent } from './poll-creator/poll-creator.component';
 import { VotePageComponent } from './vote-page/vote-page.component';
+import { LinkViewerComponent } from './link-viewer/link-viewer.component';
 
 const routes: Routes = [
 	{ path: '', component: PollCreatorComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
 		GraphComponent,
 		VotePageComponent,
 		PollCreatorComponent,
+  LinkViewerComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes), FormsModule],
 	exports: [RouterModule],
