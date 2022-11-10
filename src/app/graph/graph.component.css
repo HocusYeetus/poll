@@ -25,14 +25,29 @@ span {
     flex: 33%;
 }
 
-.container>* {
-  margin: 2em;
+.container {
+  width: 80%;
+}
+
+.plot {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.plot>* {
+  margin: 1em;
+}
+
+ul{
+  flex-grow: 1;
 }
 
 .item {
   background-color: #00ADB5;
+  flex-grow: 1;
   border-radius: 1em;
-  margin: auto;
+  margin: 1em auto;
   text-align: left;
   width: 100%;
   display: flex;

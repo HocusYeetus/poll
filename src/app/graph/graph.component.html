@@ -1,9 +1,19 @@
 <div class="container">
-  <figure class="pie-chart" [ngStyle]="{'background': graphColors, 'border-radius': '50%'}"></figure>
-  <ul>
-    <div class="item"  *ngFor="let kv of poll?.resultsToTuples()">
-      <span class="name">{{ kv[0] }}:</span>
-      <span class="percent">{{ kv[1] | percent: "1.1-1" }}</span>
-    </div>
-  </ul>
+	<div class="plot">
+		<figure
+			class="pie-chart"
+			[ngStyle]="{ background: graphColors, 'border-radius': '50%' }"
+		></figure>
+		<ul>
+			<div
+				class="item"
+				*ngFor="let kv of poll?.resultsToTuples(); let i = index"
+				[ngStyle]="{ background: [colors[i]] }"
+			>
+				<span class="name">{{ kv[0] }}:</span>
+				<span class="percent">{{ kv[1] | percent: "1.1-1" }}</span>
+			</div>
+		</ul>
+	</div>
 </div>
+<app-link-viewer></app-link-viewer>
